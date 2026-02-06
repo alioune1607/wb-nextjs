@@ -1,12 +1,14 @@
 'use client';
 import { Container, Row, Col, Nav } from 'react-bootstrap';
+import Link from 'next/link';
+import SocialLogo from './SocialLogo'; // <--- CAMBIO IMPORTANTE
 
 export default function Footer() {
   return (
     <footer className="bg-dark text-white mt-5 pt-5">
       <Container>
         <Row>
-          {/* Calendario Enero 2026 */}
+          {/* Columna 1 */}
           <Col md={6} className="mb-4">
             <h5 className="text-uppercase border-bottom pb-2 mb-3">Calendario</h5>
             <p className="small mb-1">ENERO 2026</p>
@@ -22,13 +24,34 @@ export default function Footer() {
             </table>
           </Col>
 
-          {/* Encuéntranos en... */}
+          {/* Columna 2 */}
           <Col md={6} className="mb-4">
             <h5 className="text-uppercase border-bottom pb-2 mb-3">Encuéntranos en..</h5>
             <p className="small mb-1 fw-bold">DIRECCIÓN POSTAL:</p>
             <p className="small text-secondary">Avda. Guillermo Reyna, 35. 04600 HUÉRCAL-OVERA</p>
             <p className="small mb-1 fw-bold">EMAIL:</p>
             <p className="small text-secondary">04002714.edu@juntadeandalucia.es</p>
+
+            {/* USAMOS EL NUEVO COMPONENTE */}
+            <div className="d-flex gap-3 mt-4">
+               <SocialLogo 
+                 imagen="/facebook.png" 
+                 enlace="https://facebook.com" 
+                 alt="Facebook" 
+               />
+               
+               <SocialLogo 
+                 imagen="/youtube.png" 
+                 enlace="https://youtube.com" 
+                 alt="YouTube" 
+               />
+               
+               <SocialLogo 
+                 imagen="/instagram.png" 
+                 enlace="https://instagram.com" 
+                 alt="Instagram" 
+               />
+            </div>
           </Col>
         </Row>
       </Container>
@@ -37,10 +60,10 @@ export default function Footer() {
       <div className="py-3 border-top border-secondary mt-3" style={{ backgroundColor: '#111' }}>
         <Container>
           <Nav className="small fw-bold">
-            <Nav.Link href="#" className="text-white ps-0">INICIO</Nav.Link>
-            <Nav.Link href="#" className="text-white">NOTICIAS</Nav.Link>
-            <Nav.Link href="#" className="text-white">OFERTA EDUCATIVA</Nav.Link>
-            <Nav.Link href="#" className="text-white">CONTACTO</Nav.Link>
+            <Nav.Link as={Link} href="/" className="text-white ps-0">INICIO</Nav.Link>
+            <Nav.Link as={Link} href="/noticias" className="text-white">NOTICIAS</Nav.Link>
+            <Nav.Link as={Link} href="/oferta" className="text-white">OFERTA EDUCATIVA</Nav.Link>
+            <Nav.Link as={Link} href="/contacto" className="text-white">CONTACTO</Nav.Link>
           </Nav>
         </Container>
       </div>
